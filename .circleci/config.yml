@@ -34,8 +34,9 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
   test:
-    # run tests!
-    run: npm test
+    steps:
+      # run tests!
+      - run: npm test
 
   deploy:
     <<: *defaults
