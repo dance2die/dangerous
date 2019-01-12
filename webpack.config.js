@@ -1,9 +1,12 @@
-// Created using https://webpack.jakoblind.no/
-const webpack = require("webpack");
+// Created using
+// 1. https://webpack.jakoblind.no/
+// 2. https://webpack.js.org/guides/typescript/
+// const webpack = require("webpack");
 const path = require("path");
 
 const config = {
   entry: "./src/index.tsx",
+  devtool: "inline-source-map",
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "bundle.js"
