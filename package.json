@@ -19,6 +19,8 @@
     "@types/react-dom": "16.0.11",
     "@types/react-is": "16.5.0",
     "babel-loader": "^8.0.5",
+    "react": ">= 15",
+    "react-dom": ">= 15",
     "hoist-non-react-statics": "^3.2.1",
     "react-is": "^16.7.0",
     "shx": "^0.3.2",
