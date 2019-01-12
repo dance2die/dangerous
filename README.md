@@ -17,7 +17,7 @@ value.
 # 👨‍💻 Example
 
 ```javascript
-const Dangerous = dangerous(Block)`
+const Dangerous = dangerous.div`
   <h1>Who am I?</h1>
   <p>Last Name is "${props => props.lastName}"</p>
   <p>First Name is "${props => props.firstName}"</p>
@@ -28,6 +28,8 @@ function App() {
   return <Dangerous firstName="Sung" lastName="Kim" />;
 }
 ```
+
+[![Edit dangerous-demo](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/x7ymrzw88q)
 
 Code above will display following and clicking on "Show Alert" link will show an alert.
 
