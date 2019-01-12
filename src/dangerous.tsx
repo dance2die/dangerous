@@ -3,7 +3,13 @@ import { isValidElementType } from "react-is";
 import domElements from "./domElements";
 import hoistNonReactStatic from "hoist-non-react-statics";
 
-import { Target, LineBuilder, HtmlBuilder } from "./types";
+import {
+  Target,
+  LineBuilder,
+  HtmlBuilder,
+  Args,
+  DangerousComponentProps
+} from "./types";
 
 // https://github.com/styled-components/styled-components/blob/master/src/utils/isTag.js
 function isTag(target: Target): boolean {
@@ -15,12 +21,9 @@ function isTag(target: Target): boolean {
   );
 }
 
-interface DangerousComponentProps {
-  as: Target;
-  forwardedRef: React.RefObject<Target>;
-}
-
-function DangerousComponent(props): React.ComponentType {
+function DangerousComponent(
+  props: DangerousComponentProps
+): React.ComponentType {
   const { as: WrappedComponent, args, forwardedRef } = props;
   const [texts, ...callbacks] = args;
 
@@ -36,13 +39,15 @@ function DangerousComponent(props): React.ComponentType {
   );
 }
 
-function contructWithArgs(tag: Target, args): React.ComponentType {
+function contructWithArgs(tag: Target, args: Args): React.ComponentType {
   if (!isValidElementType(tag))
     throw new Error(`${tag} is not a valid React element`);
 
-  const WrappedComponent = React.forwardRef((props, ref) => (
-    <DangerousComponent as={tag} args={args} forwardedRef={ref} {...props} />
-  ));
+  const WrappedComponent = React.forwardRef(
+    (props: DangerousComponentProps, ref: React.Ref<Target>) => (
+      <DangerousComponent as={tag} args={args} forwardedRef={ref} {...props} />
+    )
+  );
 
   WrappedComponent.displayName = `ContructWithArgs(${getDisplayName(tag)})`;
 
@@ -57,9 +62,8 @@ function getDisplayName(WrappedComponent): string {
   return WrappedComponent.displayName || WrappedComponent.name || "Component";
 }
 
-type Args = string | Function;
-
-const dangerous = (tag: Target) => (...args) => contructWithArgs(tag, args);
+const dangerous = (tag: Target) => (...args: Args) =>
+  contructWithArgs(tag, args);
 
 // Shorthands for all valid HTML Elements
 domElements.forEach((domElement: string) => {
