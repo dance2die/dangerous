@@ -15,12 +15,11 @@ defaults: &defaults
     - image: circleci/node:10.15.0
 
 jobs:
-  <<: *defaults
   test:
+    <<: *defaults
     steps:
       - checkout
 
-      # Download and cache dependencies
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
@@ -37,6 +36,9 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
+      - persist_to_workspace:
+          root: ~/repo
+          paths: .
   deploy:
     <<: *defaults
     steps:
@@ -49,6 +51,7 @@ jobs:
       - run:
           name: Publish package
           command: npm publish
+
 workflows:
   version: 2
   test-deploy:
