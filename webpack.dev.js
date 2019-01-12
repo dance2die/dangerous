@@ -1,17 +1,28 @@
 // Created using
 // 1. https://webpack.jakoblind.no/
 // 2. https://webpack.js.org/guides/typescript/
-// const webpack = require("webpack");
+const webpack = require("webpack");
 const path = require("path");
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+
+const PATHS = {
+  entryPoint: path.resolve(__dirname, "src/dangerous.tsx"),
+  bundles: path.resolve(__dirname, "_bundles")
+};
 
 const config = {
-  entry: "./src/dangerous.tsx",
-  devtool: "inline-source-map",
-  output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: "index.js",
-    library: "dangerous"
+  entry: {
+    dangerous: [PATHS.entryPoint],
+    "dangerous.min": [PATHS.entryPoint]
   },
+  output: {
+    path: PATHS.bundles,
+    filename: "[name].js",
+    libraryTarget: "umd",
+    library: "dangerous",
+    umdNamedDefine: true
+  },
+  devtool: "inline-source-map",
   module: {
     rules: [
       {
