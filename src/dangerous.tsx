@@ -1,5 +1,4 @@
 import React from "react";
-import { isValidElementType } from "react-is";
 import domElements from "./domElements";
 import hoistNonReactStatic from "hoist-non-react-statics";
 
@@ -37,9 +36,6 @@ function DangerousComponent(props) {
 }
 
 function contructWithArgs(tag, args) {
-  if (!isValidElementType(tag))
-    throw new Error(`${tag} is not a valid React element`);
-
   const WrappedComponent = React.forwardRef((props, ref) => (
     <DangerousComponent as={tag} args={args} forwardedRef={ref} {...props} />
   ));
