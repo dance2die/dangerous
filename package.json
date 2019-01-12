@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "clean": "shx rm -rf dist",
+    "test": "echo 'do nothing for now'",
     "build:dev": "npm run clean && webpack --mode=development --config webpack.dev.js",
     "build:prod": "npm run clean && webpack --mode=production --config webpack.prod.js"
   },
