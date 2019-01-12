@@ -1,8 +1,8 @@
 {
   "name": "dangerous",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Create Dangerous React Component",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "clean": "shx rm -rf dist",
     "test": "echo 'do nothing for now'",
