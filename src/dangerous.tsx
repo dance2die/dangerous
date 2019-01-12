@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { isValidElementType } from "react-is";
 import domElements from "./domElements";
 import hoistNonReactStatic from "hoist-non-react-statics";
