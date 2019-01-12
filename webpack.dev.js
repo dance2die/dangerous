@@ -5,7 +5,7 @@
 const path = require("path");
 
 const config = {
-  entry: "./src/index.tsx",
+  entry: "./src/dangerous.tsx",
   devtool: "inline-source-map",
   output: {
     path: path.resolve(__dirname, "dist"),

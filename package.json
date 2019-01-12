@@ -1,6 +1,6 @@
 {
   "name": "dangerous",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Create Dangerous React Component",
   "main": "dist/index.js",
   "scripts": {
