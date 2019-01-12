@@ -8,7 +8,7 @@ import analyze from "rollup-plugin-analyzer";
 export default {
   // Optimization: Don't include react in the library.
   // https://hackernoon.com/making-of-a-component-library-for-react-e6421ea4e6c7
-  external: ["react", "react-dom", "tslib"],
+  external: ["react", "react-dom"],
   input: "./src/dangerous.tsx",
   output: [
     {
