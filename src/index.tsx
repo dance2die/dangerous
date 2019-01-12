@@ -1,1 +1,3 @@
-console.log(`test`);
+import dangerous from "./dangerous";
+
+export default dangerous;

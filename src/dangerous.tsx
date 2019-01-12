@@ -3,16 +3,16 @@ import { isValidElementType } from "react-is";
 import domElements from "./domElements";
 import hoistNonReactStatic from "hoist-non-react-statics";
 
-import {
-  Target,
-  LineBuilder,
-  HtmlBuilder,
-  Args,
-  DangerousComponentProps
-} from "./types";
+// import {
+//   Target,
+//   LineBuilder,
+//   HtmlBuilder,
+//   Args,
+//   DangerousComponentProps
+// } from "./types";
 
 // https://github.com/styled-components/styled-components/blob/master/src/utils/isTag.js
-function isTag(target: Target): boolean {
+function isTag(target) {
   return (
     typeof target === "string" &&
     (process.env.NODE_ENV !== "production"
@@ -21,16 +21,13 @@ function isTag(target: Target): boolean {
   );
 }
 
-function DangerousComponent(
-  props: DangerousComponentProps
-): React.ComponentType {
+function DangerousComponent(props) {
   const { as: WrappedComponent, args, forwardedRef } = props;
   const [texts, ...callbacks] = args;
 
-  const toLines: LineBuilder = (text: string, i: number) =>
+  const toLines = (text: string, i: number) =>
     `${text}${args[i + 1] ? callbacks[i](props) : ""}`;
-  const toHtml: HtmlBuilder = (unsafeText: string, line: string) =>
-    (unsafeText += line);
+  const toHtml = (unsafeText: string, line: string) => (unsafeText += line);
 
   const __html: string = texts.map(toLines).reduce(toHtml, "");
 
@@ -39,31 +36,28 @@ function DangerousComponent(
   );
 }
 
-function contructWithArgs(tag: Target, args: Args): React.ComponentType {
+function contructWithArgs(tag, args) {
   if (!isValidElementType(tag))
     throw new Error(`${tag} is not a valid React element`);
 
-  const WrappedComponent = React.forwardRef(
-    (props: DangerousComponentProps, ref: React.Ref<Target>) => (
-      <DangerousComponent as={tag} args={args} forwardedRef={ref} {...props} />
-    )
-  );
+  const WrappedComponent = React.forwardRef((props, ref) => (
+    <DangerousComponent as={tag} args={args} forwardedRef={ref} {...props} />
+  ));
 
   WrappedComponent.displayName = `ContructWithArgs(${getDisplayName(tag)})`;
 
-  hoistNonReactStatic(WrappedComponent, tag);
+  hoistNonReactStatic(WrappedComponent, tag as React.ComponentType<any>);
 
   return WrappedComponent;
 }
 
-function getDisplayName(WrappedComponent): string {
+function getDisplayName(WrappedComponent) {
   if (isTag(WrappedComponent)) return `dangerous.${WrappedComponent}`;
 
   return WrappedComponent.displayName || WrappedComponent.name || "Component";
 }
 
-const dangerous = (tag: Target) => (...args: Args) =>
-  contructWithArgs(tag, args);
+const dangerous = tag => (...args) => contructWithArgs(tag, args);
 
 // Shorthands for all valid HTML Elements
 domElements.forEach((domElement: string) => {
