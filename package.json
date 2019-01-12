@@ -1,6 +1,6 @@
 {
   "name": "dangerous",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Create Dangerous React Component",
   "main": "dist/dangerous.cjs.js",
   "module": "dist/dangerous.esm.js",
@@ -16,8 +16,16 @@
     "dangerouslySetInnerHTML",
     "styled-components"
   ],
-  "author": "",
+  "author": "Sung KIm",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dance2die/dangerous.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dance2die/dangerous/issues"
+  },
+  "homepage": "https://github.com/dance2die/dangerous#readme",
   "dependencies": {
     "hoist-non-react-statics": "^3.2.1"
   },
