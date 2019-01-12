@@ -3,7 +3,7 @@ import { isValidElementType } from "react-is";
 import domElements from "./domElements";
 import hoistNonReactStatic from "hoist-non-react-statics";
 
-import { Target } from "./types";
+import { Target, LineBuilder, HtmlBuilder } from "./types";
 
 // https://github.com/styled-components/styled-components/blob/master/src/utils/isTag.js
 function isTag(target: Target): boolean {
@@ -19,14 +19,6 @@ interface DangerousComponentProps {
   as: Target;
   forwardedRef: React.RefObject<Target>;
 }
-
-type LineBuilder = {
-  (text: string, index: number): string;
-};
-
-type HtmlBuilder = {
-  (unsafeText: string, line: string): string;
-};
 
 function DangerousComponent(props): React.ComponentType {
   const { as: WrappedComponent, args, forwardedRef } = props;
