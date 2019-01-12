@@ -1,3 +1,9 @@
+![npm](https://img.shields.io/npm/v/dangerous.svg?style=flat-square)
+![minified size](https://img.shields.io/bundlephobia/min/dangerous.svg?style=flat-square)
+![build](https://img.shields.io/circleci/project/github/dance2die/dangerous/master.svg?style=flat-square)
+[![](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/dance2die)
+
+
 # 🤔 What?
 
 Create a dangerous React component in Styled Components style (tagged literal
