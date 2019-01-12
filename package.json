@@ -1,9 +1,9 @@
 {
   "name": "dangerous",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "description": "Create Dangerous React Component",
-  "main": "dist/dangerous.js",
-  "module": "dist-esm/dangerous.js",
+  "main": "dist/dangerous.cjs.js",
+  "module": "dist/dangerous.esm.js",
   "scripts": {
     "clean": "shx rm -rf dist dist-esm",
     "test": "echo 'do nothing for now'",
