@@ -4,4 +4,3 @@
 **/webpack.prod.js
 node_modules
 src
-public

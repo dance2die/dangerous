@@ -1,8 +1,5 @@
 # Sung's customizations
 dist
-dist-esm
-_bundles
-public
 
 # Logs
 logs
