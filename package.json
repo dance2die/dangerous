@@ -9,7 +9,12 @@
     "build:dev": "npm run clean && webpack --mode=development --config webpack.dev.js",
     "build:prod": "npm run clean && webpack --mode=production --config webpack.prod.js"
   },
-  "keywords": [],
+  "keywords": [
+    "react",
+    "dangerous",
+    "dangerouslySetInnerHTML",
+    "styled-components"
+  ],
   "author": "",
   "license": "MIT",
   "devDependencies": {

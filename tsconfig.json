@@ -21,7 +21,7 @@
     "jsx": "react",                           /* Specify JSX code generation: 'preserve', 'react-native', or 'react'. */
     // I want to start small and turn this on later.
     "noImplicitAny": false,                  /* Raise error on expressions and declarations with an implied 'any' type. */
-    // "lib": [],                             /* Specify library files to be included in the compilation. */
+    "lib": [ "es2015", "dom" ],              /* Specify library files to be included in the compilation. */
     // "allowJs": true,                       /* Allow javascript files to be compiled. */
     // "checkJs": true,                       /* Report errors in .js files. */
     // "declarationMap": true,                /* Generates a sourcemap for each corresponding '.d.ts' file. */
