@@ -13,8 +13,10 @@
     "@babel/core": "^7.2.2",
     "@babel/preset-env": "^7.2.3",
     "@babel/preset-react": "^7.0.0",
-    "@types/react": "^16.7.18",
-    "@types/react-dom": "^16.0.11",
+    "@types/hoist-non-react-statics": "3.0.1",
+    "@types/react": "16.7.18",
+    "@types/react-dom": "16.0.11",
+    "@types/react-is": "16.5.0",
     "babel-loader": "^8.0.5",
     "ts-loader": "^5.3.3",
     "typescript": "^3.2.2",
@@ -22,8 +24,8 @@
     "webpack-cli": "^3.2.1"
   },
   "dependencies": {
-    "react": "^16.7.0",
-    "react-dom": "^16.7.0"
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
   },
   "presets": [
     [
