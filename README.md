@@ -3,6 +3,7 @@
 ![build](https://img.shields.io/circleci/project/github/dance2die/dangerous/master.svg?style=flat-square)
 [![](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/dance2die)
 
+![logo](img/dangerous-logo.jpg)
 
 # 🤔 What?
 
