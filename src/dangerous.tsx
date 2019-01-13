@@ -21,7 +21,7 @@ function isTag(target) {
 }
 
 function DangerousComponent(props) {
-  const { as: WrappedComponent, args, forwardedRef, ...rest } = props;
+  const { as: WrappedComponent, args, forwardedRef, className } = props;
   const [texts, ...callbacks] = args;
 
   const toLines = (text: string, i: number) =>
@@ -31,13 +31,17 @@ function DangerousComponent(props) {
   const __html: string = texts.map(toLines).reduce(toHtml, "");
 
   return (
-    <WrappedComponent ref={forwardedRef} dangerouslySetInnerHTML={{ __html }} {...rest} />
+    <WrappedComponent
+      ref={forwardedRef}
+      dangerouslySetInnerHTML={{ __html }}
+      className={className}
+    />
   );
 }
 
 function contructWithArgs(tag, args) {
   const WrappedComponent = React.forwardRef((props, ref) => (
-    <DangerousComponent as={tag} args={args} forwardedRef={ref} {...props} />
+    <DangerousComponent as={tag} args={args} forwardedRef={ref} />
   ));
 
   WrappedComponent.displayName = `ContructWithArgs(${getDisplayName(tag)})`;
