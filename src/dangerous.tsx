@@ -41,7 +41,7 @@ function DangerousComponent(props) {
 
 function contructWithArgs(tag, args) {
   const WrappedComponent = React.forwardRef((props, ref) => (
-    <DangerousComponent as={tag} args={args} forwardedRef={ref} />
+    <DangerousComponent as={tag} args={args} forwardedRef={ref} {...props} />
   ));
 
   WrappedComponent.displayName = `ContructWithArgs(${getDisplayName(tag)})`;
