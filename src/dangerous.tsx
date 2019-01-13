@@ -21,7 +21,7 @@ function isTag(target) {
 }
 
 function DangerousComponent(props) {
-  const { as: WrappedComponent, args, forwardedRef } = props;
+  const { as: WrappedComponent, args, forwardedRef, ...rest } = props;
   const [texts, ...callbacks] = args;
 
   const toLines = (text: string, i: number) =>
@@ -31,7 +31,7 @@ function DangerousComponent(props) {
   const __html: string = texts.map(toLines).reduce(toHtml, "");
 
   return (
-    <WrappedComponent ref={forwardedRef} dangerouslySetInnerHTML={{ __html }} />
+    <WrappedComponent ref={forwardedRef} dangerouslySetInnerHTML={{ __html }} {...rest} />
   );
 }
 
