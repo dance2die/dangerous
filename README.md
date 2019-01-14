@@ -32,6 +32,6 @@ function App() {
 
 [![Edit dangerous-demo](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/x7ymrzw88q)
 
-Code above will display following and clicking on "Show Alert" link will show an alert.
+Code above will display the following and clicking on "Show Alert" link will show an alert.
 
 ![demo](img/demo.gif)
