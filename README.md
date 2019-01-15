@@ -18,12 +18,13 @@ value.
 # 👨‍💻 Example
 
 ```javascript
-const Dangerous = dangerous.div`
+const DangerousComponent = dangerous.div`
   <h1>Who am I?</h1>
   <p>Last Name is "${props => props.lastName}"</p>
   <p>First Name is "${props => props.firstName}"</p>
-  <a href="javascript:alert('hi');">Show Alert</a>
-`;
+  <a href="javascript:alert('${({ firstName, lastName }) =>
+    `Hi ${firstName} ${lastName}`}');">Show Alert</a>`;
+
 
 function App() {
   return <Dangerous firstName="Sung" lastName="Kim" />;
