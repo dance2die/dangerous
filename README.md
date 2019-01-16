@@ -1,6 +1,6 @@
 ![logo](img/dangerous-logo.jpg)
 
-# dangerous
+# ☢ dangerous
 ![npm](https://img.shields.io/npm/v/dangerous.svg?style=flat-square)
 ![minified size](https://img.shields.io/bundlephobia/min/dangerous.svg?style=flat-square)
 ![build](https://img.shields.io/circleci/project/github/dance2die/dangerous/master.svg?style=flat-square)
@@ -15,7 +15,7 @@ The syntax is borrowed from [Styled Components](https://www.styled-components.co
 internally to convert your dangerous input to set literal to DOM's innerHTML
 value.
 
-# Requirement ⚠️
+# ⚠️ Requirement
 
 Minimum required version of React is v16.3.0 because  `dangerous` uses [React.forwardRef](https://reactjs.org/docs/react-api.html#reactforwardref), which was [introduced in v16.3.0](https://reactjs.org/blog/2018/03/29/react-v-16-3.html#forwardref-api).
 
@@ -27,9 +27,9 @@ $ npm i dangerous
 $ yarn add dangerous
 ```
 
-## Usage
+## ✍ Usage
 
-### Basic Usage
+### 👶 Basic Usage
 
 You can pass raw HTML to `dangerous` using tagged template literal.
 
@@ -49,7 +49,7 @@ const DangerousComponent = dangerous.section`Unsafe HTML`
 const DangerousComponent = dangerous(CustomComponent)`Unsafe HTML`
 ```
 
-### Advanced Usage
+### 🐱‍👤 Advanced Usage
 
 `dangerous` returns a React component, to which you can pass props, which you can access within tagged template literal.
 
@@ -81,36 +81,85 @@ const DangerousComponent = dangerous.div`
   <a href="javascript:alert('${({ firstName, lastName }) => `Hi ${firstName} ${lastName}`}');">Show Alert</a>`;
 ```
 
-### Return object
+### ⤵ Return object
 
 `dangerous` returns a React component and behaves like a HoC ([High-order Component](https://reactjs.org/docs/higher-order-components.html)).  
 
+If a custom component is passed to `dangerous`, then all static properties will be hoisted down to the wrapped component.
 
 
 # 👨‍💻 Example
 
-```javascript
-const DangerousComponent = dangerous.div`
+The example below shows how to use `dangerous` with a custom `Block` components with static properties and Styled Components, `StyledDangerous` & `StyledBlock`.
+
+It also demo's wrapping `StyledBlock` (a Styled Component component 😅) with `dangerous` as `DangerousStyled`.
+
+[![Edit Dangerous Demo - Styled Components](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/q7vn2p20rq)
+
+```jsx
+import React from "react";
+import ReactDOM from "react-dom";
+
+import styled from "styled-components";
+import dangerous from "dangerous";
+
+import "./styles.css";
+
+class Block extends React.Component {
+  // To check if static fields are hoised correctly
+  static count = 10;
+  static increaseCount = () => console.log(++Block.count);
+  static decreaseCount = () => console.log(--Block.count);
+
+  render() {
+    return <div {...this.props} />;
+  }
+}
+
+const Dangerous = dangerous.div`
   <h1>Who am I?</h1>
   <p>Last Name is "${props => props.lastName}"</p>
   <p>First Name is "${props => props.firstName}"</p>
   <a href="javascript:alert('${({ firstName, lastName }) =>
     `Hi ${firstName} ${lastName}`}');">Show Alert</a>`;
 
+const StyledDangerous = styled(Dangerous)`
+  background-color: papayawhip;
+  padding: 1.5em 0;
+`;
+
+const StyledBlock = styled(Block)`
+  background-color: hotpink;
+  padding: 1.5em 0;
+`;
+
+const DangerousStyled = dangerous(StyledBlock)`
+  <h1>Alter Ego</h1>
+  <p>Click link below to find out who my alter ego is</p>
+  <a href="javascript:alert('${props => props.name}');">Show Aleter Ego Name</a>
+`;
 
 function App() {
-  return <Dangerous firstName="Sung" lastName="Kim" />;
+  return (
+    <div className="App">
+      <section>
+        <StyledDangerous firstName="Sung" lastName="Kim" />
+        <DangerousStyled name="dance2die" />
+      </section>
+    </div>
+  );
 }
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(<App />, rootElement);
 ```
 
-[![Edit dangerous-demo](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/x7ymrzw88q)
-
-Code above will display the following and clicking on "Show Alert" link will show an alert.
+### 🥊 Demo in action
 
 ![demo](img/demo.gif)
 
 
-# To Do
+# 💪 To Dos
 1. Create a GitHub project for version 1.
     1. Add TypeScript types
     1. Add TypeScript definition files to distribution
