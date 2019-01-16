@@ -29,13 +29,17 @@ $ yarn add dangerous
 
 ## Usage
 
+### Basic Usage
+
+You can pass raw HTML to `dangerous` using tagged template literal.
+
 ```js
 const DangerousComponent = dangerous.div`Unsafe HTML`
 // or
 const DangerousComponent = dangerous('div')`Unsafe HTML`
 ```
 
-You can Subtitute `div` with any valid HTML tag or a custom React component.  
+You can Subtitute `div` with any valid [DOM elements](https://github.com/dance2die/dangerous/blob/master/src/domElements.ts) or a custom React component.  
 
 ```js
 const DangerousComponent = dangerous.span`Unsafe HTML`
@@ -44,6 +48,39 @@ const DangerousComponent = dangerous.section`Unsafe HTML`
 // and
 const DangerousComponent = dangerous(CustomComponent)`Unsafe HTML`
 ```
+
+### Advanced Usage
+
+`dangerous` returns a React component, to which you can pass props, which you can access within tagged template literal.
+
+```js
+const DangerousComponent = dangerous.div`
+  <h1>Who am I?</h1>
+  <p>Last Name is "${props => props.lastName}"</p>
+  <p>First Name is "${props => props.firstName}"</p>
+  <a href="javascript:alert('${({ firstName, lastName }) =>
+    `Hi ${firstName} ${lastName}`}');">Show Alert</a>`;
+
+function App() {
+  return <DangerousComponent firstName="Sung" lastName="Kim" />;
+}
+```
+
+In the code above, `<DangerousComponent />` is passed following props in `App`.
+1. `firstName="Sung"`
+1. `lastName="Kim"`
+
+You can access the props in the tagged literal using `${props => props.properyName}`.  
+_This was taken directly from [Styled Component syntax](https://www.styled-components.com/docs/basics#passed-props)._
+
+And you can destructure props and combine it to compose any string you want.
+
+```js
+const DangerousComponent = dangerous.div`
+  //... omitted for brevity
+  <a href="javascript:alert('${({ firstName, lastName }) => `Hi ${firstName} ${lastName}`}');">Show Alert</a>`;
+```
+
 
 # 👨‍💻 Example
 
