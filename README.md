@@ -27,6 +27,23 @@ $ npm i dangerous
 $ yarn add dangerous
 ```
 
+## Usage
+
+```js
+const DangerousComponent = dangerous.div`Unsafe HTML`
+// or
+const DangerousComponent = dangerous('div')`Unsafe HTML`
+```
+
+You can Subtitute `div` with any valid HTML tag or a custom React component.  
+
+```js
+const DangerousComponent = dangerous.span`Unsafe HTML`
+const DangerousComponent = dangerous.p`Unsafe HTML`
+const DangerousComponent = dangerous.section`Unsafe HTML`
+// and
+const DangerousComponent = dangerous(CustomComponent)`Unsafe HTML`
+```
 
 # 👨‍💻 Example
 
