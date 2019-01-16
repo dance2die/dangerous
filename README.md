@@ -34,20 +34,35 @@ $ yarn add dangerous
 You can pass raw HTML to `dangerous` using tagged template literal.
 
 ```js
-const DangerousComponent = dangerous.div`Unsafe HTML`
+const DangerousComponent = dangerous.div`💖 &amp; 🕊`;
 // or
-const DangerousComponent = dangerous('div')`Unsafe HTML`
+const DangerousComponent = dangerous('div')`💖 &amp; 🕊`
 ```
 
 You can Subtitute `div` with any valid [DOM elements](https://github.com/dance2die/dangerous/blob/master/src/domElements.ts) or a custom React component.  
 
 ```js
-const DangerousComponent = dangerous.span`Unsafe HTML`
-const DangerousComponent = dangerous.p`Unsafe HTML`
-const DangerousComponent = dangerous.section`Unsafe HTML`
+const DangerousComponent = dangerous.span`💖 &amp; 🕊`
+const DangerousComponent = dangerous.p`💖 &amp; 🕊`
+const DangerousComponent = dangerous.section`💖 &amp; 🕊`
 // and
-const DangerousComponent = dangerous(CustomComponent)`Unsafe HTML`
+const DangerousComponent = dangerous(CustomComponent)`💖 &amp; 🕊`
 ```
+
+#### Render Result
+
+Dangerous component will set `&emp;` directly so the rendered result will show
+```html
+💖 & 🕊
+```
+
+while React will render it as
+```html
+💖 &amp; 🕊
+```
+as shown below.
+
+![basic-usage-render-result](img/basic-render.png)
 
 ### 🐱‍👤 Advanced Usage
 
