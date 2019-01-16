@@ -81,6 +81,11 @@ const DangerousComponent = dangerous.div`
   <a href="javascript:alert('${({ firstName, lastName }) => `Hi ${firstName} ${lastName}`}');">Show Alert</a>`;
 ```
 
+### Return object
+
+`dangerous` returns a React component and behaves like a HoC ([High-order Component](https://reactjs.org/docs/higher-order-components.html)).  
+
+
 
 # 👨‍💻 Example
 
