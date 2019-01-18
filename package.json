@@ -1,7 +1,7 @@
 {
   "name": "dangerous",
   "version": "0.1.19",
-  "description": "Create Dangerous React Component",
+  "description": "Create dangerous React components",
   "main": "dist/dangerous.cjs.js",
   "module": "dist/dangerous.esm.js",
   "types": "dist/dangerous.d.ts",
@@ -19,7 +19,7 @@
     "dangerouslySetInnerHTML",
     "styled-components"
   ],
-  "author": "Sung KIm",
+  "author": "Sung Kim",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -46,12 +46,9 @@
     "rollup-plugin-node-resolve": "^4.0.0",
     "rollup-plugin-terser": "^4.0.2",
     "rollup-plugin-typescript2": "^0.19.2",
-    "rollup-plugin-uglify": "^6.0.1",
-    "rollup-plugin-uglify-es": "0.0.1",
     "shx": "^0.3.2",
     "tslib": "^1.9.3",
-    "typescript": "^3.2.2",
-    "uglify-es": "^3.3.9"
+    "typescript": "^3.2.2"
   },
   "peerDependencies": {
     "react": ">= 16.3.0",
