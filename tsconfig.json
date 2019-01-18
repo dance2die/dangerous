@@ -1,50 +1,54 @@
-// // https://github.com/elboman/typescript-lib-example/blob/master/tsconfig.json
-// {
-//   "compilerOptions": {
-//     "moduleResolution": "node",
-//     "module": "commonjs",
-//     "target": "es5",
-//     // "lib": ["es5", "es6", "dom"],
-//     "outDir": "dist",
-//     "allowSyntheticDefaultImports": true,
-//     "suppressImplicitAnyIndexErrors": true,
-//     "forceConsistentCasingInFileNames": true,
-//     "sourceMap": true,
-//     "declaration": true,
-//     // https://hackernoon.com/building-and-publishing-a-module-with-typescript-and-rollup-js-faa778c85396
-//     "declarationDir": "./dist",
-//     "jsx": "react",
-//     "importHelpers": true,
-//     "noImplicitAny": true
-//   },
-//   "include": [
-//     "src/**/*"
-//   ],
-//   "exclude": ["node_modules"],
-//   "files": [
-//     "./src/dangerous.tsx"
-//   ],
-//   "compileOnSave": false,
-//   "buildOnSave": false
-// }
 // https://github.com/elboman/typescript-lib-example/blob/master/tsconfig.json
 {
   "compilerOptions": {
-    "declaration": true,
-    "declarationDir": "./dist",
-    "module": "es6",
-    "noImplicitAny": false,
-    "outDir": "./dist",
+    "moduleResolution": "node",
+    // "module": "commonjs",
     "target": "es5",
-    "jsx": "react",
+    // "lib": ["es5", "es6", "dom"],
+    "outDir": "dist",
     "allowSyntheticDefaultImports": true,
     "suppressImplicitAnyIndexErrors": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "sourceMap": true,
+    "declaration": true,
+    // https://hackernoon.com/building-and-publishing-a-module-with-typescript-and-rollup-js-faa778c85396
+    "declarationDir": "./dist",
+    "jsx": "react",
+    "importHelpers": true,
+    // "noImplicitAny": true
   },
   "include": [
     "src/**/*"
   ],
   "exclude": ["node_modules"],
+  "files": [
+    "./src/dangerous.tsx"
+  ],
   "compileOnSave": false,
   "buildOnSave": false
 }
+
+// // https://github.com/elboman/typescript-lib-example/blob/master/tsconfig.json
+// {
+//   "compilerOptions": {
+//     "declaration": true,
+//     "declarationDir": "./dist",
+//     "module": "es6",
+//     "moduleResolution": "node",
+//     "importHelpers": true,
+//     // "lib": ["es5", "es6", "dom"],
+//     "noImplicitAny": false,
+//     "outDir": "./dist",
+//     "target": "es5",
+//     "jsx": "react",
+//     "allowSyntheticDefaultImports": true,
+//     "suppressImplicitAnyIndexErrors": true,
+//     "forceConsistentCasingInFileNames": true
+//   },
+//   "include": [
+//     "src/**/*"
+//   ],
+//   "exclude": ["node_modules"],
+//   "compileOnSave": false,
+//   "buildOnSave": false
+// }
