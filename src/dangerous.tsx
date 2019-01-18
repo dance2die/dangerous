@@ -1,6 +1,6 @@
 import React from "react";
 import domElements from "./domElements";
-import hoistNonReactStatic from "hoist-non-react-statics";
+import hoistNonReactStatics from "hoist-non-react-statics";
 
 // import {
 //   Target,
@@ -46,7 +46,7 @@ function contructWithArgs(tag, args) {
 
   WrappedComponent.displayName = `ContructWithArgs(${getDisplayName(tag)})`;
 
-  hoistNonReactStatic(WrappedComponent, tag as React.ComponentType<any>);
+  hoistNonReactStatics(WrappedComponent, tag as React.ComponentType<any>);
 
   return WrappedComponent;
 }

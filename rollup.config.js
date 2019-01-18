@@ -1,8 +1,15 @@
-// import resolve from "rollup-plugin-node-resolve";
+import resolve from "rollup-plugin-node-resolve";
 import typescript from "rollup-plugin-typescript2";
-// import commonjs from "rollup-plugin-commonjs";
-// import { terser } from "rollup-plugin-terser";
-// import analyze from "rollup-plugin-analyzer";
+// import uglify from "rollup-plugin-uglify";
+// const { uglify } = require("rollup-plugin-uglify");
+// import { uglify } from "rollup-plugin-uglify";
+// // https://github.com/TrySound/rollup-plugin-uglify/issues/37#issuecomment-329108094
+// import { minify } from "uglify-es";
+// const uglify = require("rollup-plugin-uglify");
+import commonjs from "rollup-plugin-commonjs";
+import { terser } from "rollup-plugin-terser";
+// import uglify from "rollup-plugin-uglify-es";
+import analyze from "rollup-plugin-analyzer";
 
 // https://hackernoon.com/building-and-publishing-a-module-with-typescript-and-rollup-js-faa778c85396
 import pkg from "./package.json";
@@ -29,16 +36,11 @@ export default {
     ...Object.keys(pkg.peerDependencies || {})
   ],
   plugins: [
-    typescript({
-      typescript: require("typescript")
-    })
+    resolve(),
+    typescript(),
+    // the ".ts" extension is required
+    commonjs({ extensions: [".js", ".ts", , ".tsx"] }),
+    process.env.NODE_ENV === "production" && terser(),
+    analyze()
   ]
 };
-// plugins: [
-//   resolve(),
-//   typescript({ declaration: true }),
-//   // // the ".ts" extension is required
-//   // commonjs({ extensions: [".js", ".ts", , ".tsx"] }),
-//   // terser(),
-//   analyze()
-// ]
