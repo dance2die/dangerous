@@ -4,3 +4,4 @@
 **/webpack.prod.js
 node_modules
 src
+.rpt2*

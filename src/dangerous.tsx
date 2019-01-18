@@ -11,7 +11,7 @@ import hoistNonReactStatic from "hoist-non-react-statics";
 // } from "./types";
 
 // https://github.com/styled-components/styled-components/blob/master/src/utils/isTag.js
-function isTag(target) {
+function isTag(target: string) {
   return (
     typeof target === "string" &&
     (process.env.NODE_ENV !== "production"
