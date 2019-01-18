@@ -1,5 +1,6 @@
 # Sung's customizations
 dist
+.rpt2*
 
 # Logs
 logs

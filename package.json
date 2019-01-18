@@ -2,8 +2,9 @@
   "name": "dangerous",
   "version": "0.1.18",
   "description": "Create Dangerous React Component",
-  "main": "dist/dangerous.cjs.js",
-  "module": "dist/dangerous.esm.js",
+  "main": "dist/dangerous.js",
+  "module": "dist/dangerous.es.js",
+  "types": "dist/dangerous.d.ts",
   "scripts": {
     "clean": "shx rm -rf dist dist-esm",
     "test": "echo 'do nothing for now'",
@@ -42,7 +43,7 @@
     "rollup-plugin-commonjs": "^9.2.0",
     "rollup-plugin-node-resolve": "^4.0.0",
     "rollup-plugin-terser": "^4.0.2",
-    "rollup-plugin-typescript": "^1.0.0",
+    "rollup-plugin-typescript2": "^0.19.2",
     "shx": "^0.3.2",
     "tslib": "^1.9.3",
     "typescript": "^3.2.2"
