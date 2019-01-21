@@ -27,28 +27,3 @@
   "compileOnSave": false,
   "buildOnSave": false
 }
-
-// // https://github.com/elboman/typescript-lib-example/blob/master/tsconfig.json
-// {
-//   "compilerOptions": {
-//     "declaration": true,
-//     "declarationDir": "./dist",
-//     "module": "es6",
-//     "moduleResolution": "node",
-//     "importHelpers": true,
-//     // "lib": ["es5", "es6", "dom"],
-//     "noImplicitAny": false,
-//     "outDir": "./dist",
-//     "target": "es5",
-//     "jsx": "react",
-//     "allowSyntheticDefaultImports": true,
-//     "suppressImplicitAnyIndexErrors": true,
-//     "forceConsistentCasingInFileNames": true
-//   },
-//   "include": [
-//     "src/**/*"
-//   ],
-//   "exclude": ["node_modules"],
-//   "compileOnSave": false,
-//   "buildOnSave": false
-// }

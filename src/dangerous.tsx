@@ -2,7 +2,7 @@ import React from "react";
 import domElements from "./domElements";
 import hoistNonReactStatics from "hoist-non-react-statics";
 
-// import {
+import { LineBuilder, HtmlBuilder } from "./types";
 //   Target,
 //   LineBuilder,
 //   HtmlBuilder,
@@ -24,9 +24,9 @@ function DangerousComponent(props) {
   const { as: WrappedComponent, args, forwardedRef, className } = props;
   const [texts, ...callbacks] = args;
 
-  const toLines = (text: string, i: number) =>
+  const toLines: LineBuilder = (text, i) =>
     `${text}${args[i + 1] ? callbacks[i](props) : ""}`;
-  const toHtml = (unsafeText: string, line: string) => (unsafeText += line);
+  const toHtml: HtmlBuilder = (unsafeText, line) => (unsafeText += line);
 
   const __html: string = texts.map(toLines).reduce(toHtml, "");
 
