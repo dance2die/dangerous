@@ -1,24 +1,8 @@
-import React from "react";
+import React, { ComponentType } from "react";
 import domElements from "./domElements";
 import hoistNonReactStatics from "hoist-non-react-statics";
 
-import { LineBuilder, HtmlBuilder } from "./types";
-//   Target,
-//   LineBuilder,
-//   HtmlBuilder,
-//   Args,
-//   DangerousComponentProps
-// } from "./types";
-
-// https://github.com/styled-components/styled-components/blob/master/src/utils/isTag.js
-function isTag(target: string) {
-  return (
-    typeof target === "string" &&
-    (process.env.NODE_ENV !== "production"
-      ? target.charAt(0) === target.charAt(0).toLowerCase()
-      : true)
-  );
-}
+import { Target, LineBuilder, HtmlBuilder } from "./types";
 
 function DangerousComponent(props) {
   const { as: WrappedComponent, args, forwardedRef, className } = props;
@@ -39,25 +23,23 @@ function DangerousComponent(props) {
   );
 }
 
-function contructWithArgs(tag, args) {
+function contructWithArgs(tag: Target, args: any) {
   const WrappedComponent = React.forwardRef((props, ref) => (
     <DangerousComponent as={tag} args={args} forwardedRef={ref} {...props} />
   ));
 
-  WrappedComponent.displayName = `ContructWithArgs(${getDisplayName(tag)})`;
-
-  hoistNonReactStatics(WrappedComponent, tag as React.ComponentType<any>);
-
+  WrappedComponent.displayName = `Dangerous(${getDisplayName(tag)})`;
+  hoistNonReactStatics(WrappedComponent, tag as ComponentType<any>);
   return WrappedComponent;
 }
 
-function getDisplayName(WrappedComponent) {
-  if (isTag(WrappedComponent)) return `dangerous.${WrappedComponent}`;
-
-  return WrappedComponent.displayName || WrappedComponent.name || "Component";
+function getDisplayName(tag: Target): string {
+  return typeof tag === "string"
+    ? `dangerous.${tag}`
+    : tag.displayName || tag.name || "Component";
 }
 
-const dangerous = tag => (...args) => contructWithArgs(tag, args);
+const dangerous = (tag: Target) => (...args) => contructWithArgs(tag, args);
 
 // Shorthands for all valid HTML Elements
 domElements.forEach((domElement: string) => {
