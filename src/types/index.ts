@@ -16,14 +16,14 @@ export type HtmlBuilder = {
 //   (props: any): string;
 // }
 
-export interface DangerousComponentProps {
-  as: Target;
-  forwardedRef: React.Ref<Target>;
-  args: Args;
-}
+// export interface DangerousComponentProps {
+//   as: Target;
+//   forwardedRef: React.Ref<Target>;
+//   args: Args;
+// }
 
-interface ArgsCallback extends Array<DangerousComponentProps> {
-  (props: DangerousComponentProps): string;
-}
+// interface ArgsCallback extends Array<DangerousComponentProps> {
+//   (props: DangerousComponentProps): string;
+// }
 
-export type Args = Array<string | ArgsCallback>;
+// export type Args = Array<string | ArgsCallback>;
