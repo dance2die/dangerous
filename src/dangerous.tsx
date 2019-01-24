@@ -4,7 +4,7 @@ import hoistNonReactStatics from "hoist-non-react-statics";
 
 import { Target, LineBuilder, HtmlBuilder } from "./types";
 
-function DangerousComponent(props) {
+function DangerousComponent(props: any) {
   const { as: WrappedComponent, args, forwardedRef, className } = props;
   const [texts, ...callbacks] = args;
 
@@ -39,7 +39,8 @@ function getDisplayName(tag: Target): string {
     : tag.displayName || tag.name || "Component";
 }
 
-const dangerous = (tag: Target) => (...args) => contructWithArgs(tag, args);
+const dangerous = (tag: Target) => (...args: any) =>
+  contructWithArgs(tag, args);
 
 // Shorthands for all valid HTML Elements
 domElements.forEach((domElement: string) => {
