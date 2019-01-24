@@ -1,5 +1,11 @@
 import { ComponentType } from "react";
 
+// import domElements from "../domElements";
+
+// // https://github.com/Microsoft/TypeScript/issues/20965#issuecomment-354858633
+// export type StringValuesOf<T extends string[]> = T[number];
+// export type DOMElements = StringValuesOf<typeof domElements>;
+
 // Taken from Styled Components flow type declaration
 // https://github.com/styled-components/styled-components/blob/master/src/types.js#L16
 export type Target = string | ComponentType<any>;

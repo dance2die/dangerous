@@ -15,7 +15,8 @@
     "declarationDir": "./dist",
     "jsx": "react",
     "importHelpers": true,
-    "noImplicitAny": true
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
   },
   "include": [
     "src/**/*"
