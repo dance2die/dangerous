@@ -1,6 +1,6 @@
 {
   "name": "dangerous",
-  "version": "0.1.20",
+  "version": "0.1.21",
   "description": "Create dangerous React components",
   "main": "dist/dangerous.cjs.js",
   "module": "dist/dangerous.esm.js",
