@@ -2,7 +2,7 @@ import React, { ComponentType } from "react";
 import domElements from "./domElements";
 import hoistNonReactStatics from "hoist-non-react-statics";
 
-import { Target, LineBuilder, HtmlBuilder, DOMType } from "./types";
+import { Target, LineBuilder, HtmlBuilder, DOMType, Dangerous } from "./types";
 
 function DangerousComponent(props: any) {
   const { as: WrappedComponent, args, forwardedRef, className } = props;
@@ -23,13 +23,13 @@ function DangerousComponent(props: any) {
   );
 }
 
-function contructWithArgs(tag: Target, args: any) {
+function contructWithArgs(tag: Target, args: any[]) {
   const WrappedComponent = React.forwardRef((props, ref) => (
     <DangerousComponent as={tag} args={args} forwardedRef={ref} {...props} />
   ));
 
   WrappedComponent.displayName = `Dangerous(${getDisplayName(tag)})`;
-  hoistNonReactStatics(WrappedComponent, tag as ComponentType<any>);
+  hoistNonReactStatics(WrappedComponent, tag as ComponentType<Target>);
   return WrappedComponent;
 }
 
@@ -39,7 +39,7 @@ function getDisplayName(tag: Target): string {
     : tag.displayName || tag.name || "Component";
 }
 
-const dangerous = (tag: Target) => (...args: any) =>
+const dangerous: Dangerous = (tag: Target) => (...args: any[]) =>
   contructWithArgs(tag, args);
 
 // Shorthands for all valid HTML Elements
