@@ -1,6 +1,6 @@
 import { ComponentType } from "react";
 
-// import domElements from "../domElements";
+import domElements from "../domElements";
 
 // // https://github.com/Microsoft/TypeScript/issues/20965#issuecomment-354858633
 // export type StringValuesOf<T extends string[]> = T[number];
@@ -8,7 +8,9 @@ import { ComponentType } from "react";
 
 // Taken from Styled Components flow type declaration
 // https://github.com/styled-components/styled-components/blob/master/src/types.js#L16
-export type Target = string | ComponentType<any>;
+// export type Target = string | ComponentType<any>;
+export type DOMType = keyof typeof domElements;
+export type Target = DOMType | ComponentType<any>;
 
 export type LineBuilder = {
   (text: string, index: number): string;

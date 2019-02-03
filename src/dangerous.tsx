@@ -2,7 +2,7 @@ import React, { ComponentType } from "react";
 import domElements from "./domElements";
 import hoistNonReactStatics from "hoist-non-react-statics";
 
-import { Target, LineBuilder, HtmlBuilder } from "./types";
+import { Target, LineBuilder, HtmlBuilder, DOMType } from "./types";
 
 function DangerousComponent(props: any) {
   const { as: WrappedComponent, args, forwardedRef, className } = props;
@@ -43,7 +43,7 @@ const dangerous = (tag: Target) => (...args: any) =>
   contructWithArgs(tag, args);
 
 // Shorthands for all valid HTML Elements
-Object.keys(domElements).forEach((domElement: string) => {
+Object.keys(domElements).forEach((domElement: DOMType) => {
   dangerous[domElement] = dangerous(domElement);
 });
 
