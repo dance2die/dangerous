@@ -43,7 +43,7 @@ const dangerous = (tag: Target) => (...args: any) =>
   contructWithArgs(tag, args);
 
 // Shorthands for all valid HTML Elements
-domElements.forEach((domElement: string) => {
+Object.keys(domElements).forEach((domElement: string) => {
   dangerous[domElement] = dangerous(domElement);
 });
 
